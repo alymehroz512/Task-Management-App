@@ -22,10 +22,6 @@ This project is a Task Management Application developed using HTML, CSS, JavaScr
    - Each task has a status that can be set to In-Progress or Completed.
    - Users can toggle the status with a single button click, marking tasks as either active or done.
 
-# Task Subtasks:
-   - For complex tasks, users can add subtasks under each main task.
-   - This feature helps break down larger tasks into manageable units and keep track of smaller goals within a task.
-
 # Recurring Tasks:
    - Tasks can be set to repeat on a schedule (daily, weekly, or monthly).
    - Users can manage recurring tasks effectively without needing to recreate tasks for repeated events.
