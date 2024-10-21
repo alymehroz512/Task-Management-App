@@ -2,7 +2,7 @@
 
 # Overview
 
-This project is a Task Management Application developed using **HTML**, **CSS**, **JavaScript**, and **Bootstrap**. It allows users to create, update, delete, and manage tasks efficiently. With added functionalities like task categorization, recurrence, and status tracking, this project provides a comprehensive solution for task management. Users can attach links to tasks and get reminders about task deadlines. The application also includes an Analytics Dashboard to visualize task progress and completion rates, with insights into task distribution across categories.
+This project is a Task Management Application developed using HTML, CSS, JavaScript, and Bootstrap. It allows users to create, update, delete, and manage tasks efficiently. With added functionalities like task categorization, recurrence, and status tracking, this project provides a comprehensive solution for task management. Users can attach links to tasks and get reminders about task deadlines. The application also includes an Analytics Dashboard to visualize task progress and completion rates, with insights into task distribution across categories.
 
 # Key Functionalities
 
@@ -11,7 +11,7 @@ This project is a Task Management Application developed using **HTML**, **CSS**,
    - Tasks are displayed in the "Your Tasks" section, and users can update or delete tasks directly from this list.
 
 # Task Categorization:
-   - Users can categorize tasks into groups such as **Work**, **Personal**, **Urgent**, and others.
+   - Users can categorize tasks into groups such as Work, Personal, Urgent, and others.
    - The application allows easy categorization of tasks, which helps in filtering and organizing tasks better.
 
 # Task Recurrence:
@@ -19,7 +19,7 @@ This project is a Task Management Application developed using **HTML**, **CSS**,
    - Recurrence options make it easier to manage routine tasks that occur frequently.
 
 # Task Status Management:
-   - Each task has a status that can be set to **In Progress** or **Completed**.
+   - Each task has a status that can be set to In-Progress or Completed.
    - Users can toggle the status with a single button click, marking tasks as either active or done.
 
 # Task Subtasks:
@@ -34,10 +34,6 @@ This project is a Task Management Application developed using **HTML**, **CSS**,
    - The application sends reminders for upcoming task deadlines.
    - Users are alerted about tasks that are approaching their due date, helping them stay on top of deadlines.
    - If a task is marked as completed, the background color changes to indicate the task’s completion.
-
-# File Attachments and Links:
-   - Users can attach **links** to each task, which open in a new window when clicked.
-   - Attachments allow users to reference related web resources or documents that are relevant to the task.
 
 # Task Reports:
    - A report feature allows users to generate reports on tasks added, updated, and deleted.
