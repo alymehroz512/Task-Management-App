@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css linkage -->
+     <link rel="stylesheet" href="../css/bootstrap.css">
+     <link rel="stylesheet" href="../css/style.css">
+     <!-- fontawesome linkage -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+     <!-- favicon icon -->
+     <link rel="icon" href="../image/favicon.ico" type="image/x-icon">
+     <title>Task Management App</title>
+</head>
+<body>
+    
+    <!-- Task Management App Title Section -->
+     <div class="container-fluid mt-2 mb-2">
+        <div class="row">
+                <h1 style="background-color: #FFBF00; padding: 10px 10px; text-transform: uppercase; text-align: center;">task management app!</h1>
+        </div>
+     </div>
+
+     <div class="container-fluid">
+        <div class="row text-end mt-2 mb-2">
+            <div class="dark-mode-toggle">
+                <button id="darkModeToggle" class="btn-dark-mode" style="font-weight: 600;">🌙 Enable Dark Mode</button>
+            </div>                       
+        </div>
+     </div>
+
+    <!-- User Authentication Section -->
+    <div class="container" id="authSection">
+        <div class="row justify-content-center mt-4">
+            <!-- Login/Signup/Reset Password Images -->
+            <div class="col-md-6 mb-5 img-bg" id="imageColumn">
+                <div class="row justify-content-center mt-5">
+                    <h5 id="formQuote">Welcome back! Please log in to your account</h5>
+                </div>
+                <img src="../image/login-image.svg" alt="Signup Image" class="img-fluid animated-img h-75 w-100 p-5 mt-5" id="formImage">
+            </div>
+            <div class="col-md-6 p-5 mb-5 user-authentication-wrapper">
+                <!-- SignUp Form -->
+                <div id="signUpForm" style="display: none;">
+                    <h1 class="text-center">Sign Up</h1>
+                    <hr style="color: #FFBF00;">
+                    <form id="signupForm">
+                        <div class="mb-3">
+                            <label for="signupUsername" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="signupUsername" placeholder="Enter your username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="signupPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" placeholder="Enter your password" required>
+                            <i class="fa fa-eye-slash toggle-password" id="toggleSignUpPassword"></i>
+                            <small class="form-text" style="font-style: italic;">Password must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character.</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="signupConfirmPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" placeholder="Confirm your password" required>
+                            <i class="fa fa-eye-slash toggle-password" id="toggleConfirmSignUpPassword"></i>
+                            <small class="form-text" style="font-style: italic;">Password must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character.</small>
+                        </div>
+                        <button type="submit" class="btn btn-warning w-100"><i class="fa-solid fa-user-tie"></i>&nbsp;Sign Up</button>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="social-icons mt-4 text-center">
+                                    <a href="#"><i class="fab fa-linkedin"  style="color: #0A66C2;"></i></a>
+                                    <div class="vr"></div>
+                                    <a href="#"><i class="fab fa-github"   style="color: #181717;"></i></a>
+                                    <div class="vr"></div>
+                                    <a href="#"><i class="fab fa-instagram" style="color: #ac2bac;"></i></a>
+                                    <div class="vr"></div>
+                                    <a href="#"><i class="fab fa-twitter"   style="color: #55acee;"></i></a>
+                                  </div>
+                            </div>
+                        </div>
+                    </form>
+                    <p class="text-center mt-3">Already have an account? <a href="#" id="showLogin">Login here</a></p>
+                </div>
+                <!-- Login Form -->
+                <div id="loginForm">
+                    <h1 class="text-center">Login</h1>
+                    <hr style="color: #FFBF00;">
+                    <form id="loginFormSubmit">
+                        <div class="mb-3">
+                            <label for="loginUsername" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="loginUsername" placeholder="Enter your username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" placeholder="Enter your password" required>
+                            <i class="fa fa-eye-slash toggle-password" id="toggleLoginPassword"></i>
+                            <small class="form-text" style="font-style: italic;">Password must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character.</small>
+                        </div>
+                        <p class="text-end mt-3"><a href="#" id="showResetPassword">Forgot Password?</a></p>
+                        <button type="submit" class="btn btn-warning w-100"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Login</button>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="social-icons mt-4 text-center">
+                                    <a href="#"><i class="fab fa-linkedin"  style="color: #0A66C2;"></i></a>
+                                    <div class="vr"></div>
+                                    <a href="#"><i class="fab fa-github"   style="color: #181717;"></i></a>
+                                    <div class="vr"></div>
+                                    <a href="#"><i class="fab fa-instagram" style="color: #ac2bac;"></i></a>
+                                    <div class="vr"></div>
+                                    <a href="#"><i class="fab fa-twitter"   style="color: #55acee;"></i></a>
+                                  </div>
+                            </div>
+                        </div>
+                    </form>
+                    <p class="text-center mt-3">Don't have an account? <a href="#" id="showSignup">Sign up here</a></p>
+                </div>
+
+                <!-- Reset Password Form -->
+                <div id="resetPasswordForm" style="display: none;">
+                    <h1 class="text-center">Reset Password</h1>
+                    <hr style="color: #FFBF00;">
+                    <form id="resetPasswordSubmit">
+                        <div class="mb-3">
+                            <label for="resetUsername" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="resetUsername" placeholder="Enter your username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailReset" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="emailReset" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phoneNumber" placeholder="+92 300 1234567" pattern="^\+92 \d{3} \d{7}$" required>
+                            <small class="form-text" style="font-style: italic;">Format: +92 300 1234567</small>
+                        </div>                        
+                        <div class="mb-3">
+                            <label for="newPassword" class="form-label">New Password</label>
+                            <input type="password" class="form-control" id="newPassword"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"  placeholder="Enter your new password" required>
+                            <i class="fa fa-eye-slash toggle-password" id="toggleNewPassword"></i>
+                            <small class="form-text" style="font-style: italic;">Password must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character.</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ConfirmnewPassword" class="form-label">Confirm New Password</label>
+                            <input type="password" class="form-control" id="ConfirmnewPassword"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"  placeholder="Confirm your new password" required>
+                            <i class="fa fa-eye-slash toggle-password" id="toggleConfirmNewPassword"></i>
+                            <small class="form-text" style="font-style: italic;">Password must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character.</small>
+                        </div>
+                        <button type="submit" class="btn btn-warning w-100"><i class="fa-solid fa-lock-open"></i>&nbsp;Reset Password</button>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="social-icons mt-4 text-center">
+                                    <a href="#"><i class="fab fa-linkedin"  style="color: #0A66C2;"></i></a>
+                                    <div class="vr"></div>
+                                    <a href="https://github.com/alymehroz512?tab=overview&from=2024-08-01&to=2024-08-04"><i class="fab fa-github"   style="color: #181717;"></i></a>
+                                    <div class="vr"></div>
+                                    <a href="#"><i class="fab fa-instagram" style="color: #ac2bac;"></i></a>
+                                    <div class="vr"></div>
+                                    <a href="#"><i class="fab fa-twitter"   style="color: #55acee;"></i></a>
+                                  </div>
+                            </div>
+                        </div>
+                    </form>
+                    <p class="text-center mt-3"><a href="#" id="backToLogin">Back to Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Task Management App Section -->
+    <div class="container mt-2 mb-2 p-5" id="taskManagementSection" style="display: none;">
+        <div class="row justify-content-center mt-2 mb-2 p-2">
+            <div class="col-md-4">
+                <p><img src="../image/task-form-image.svg" alt="task-managemnet-image" class="img-fluid"></p>
+            </div>
+            <div class="col-md-8 p-2 mt-4">
+                <div class="row mb-1 justify-content-start">
+                    <h1 class="main-heading">Task Management App !</h1>
+                    <p class="wlc-msg">Welcome to the Task Management App! Stay organized and boost your productivity by easily creating, categorizing, and prioritizing your tasks. Set deadlines, manage your daily to-do's, and never miss an important task again. Let's get started and make task management simple and effective!</p>
+                    <div class="row justify-content-start mt-1 mb-1">
+                        <div class="col-md-6">
+                            <!-- Logout Button Section -->
+                            <button class="btn btn-warning w-50" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Task Management From Section -->
+        <div class="container">
+            <div class="row mb-2">
+                    <!-- Analytics Dashboard Section -->
+                    <div id="analytics-dashboard" class="mt-4">
+                        <h4 style="background-color: #FFBF00; padding: 10px 10px;"><i class="fas fa-tachometer-alt"></i>&nbsp;Analytics Dashboard</h4>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="card bg-info text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total Tasks</h5>
+                                        <p id="total-tasks" class="card-text">0</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="card bg-success text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Tasks Completed</h5>
+                                        <p id="tasks-completed" class="card-text">0</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="card bg-warning text-dark">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Tasks In Progress</h5>
+                                        <p id="tasks-in-progress" class="card-text">0</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="card bg-primary text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Completion Rate</h5>
+                                        <p id="completion-rate" class="card-text">0%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Category Breakdown Chart -->
+                        <div class="p-5">
+                            <h5 style="background-color: #FFBF00; padding: 10px 10px;"><i class="fas fa-exclamation-circle category-icon"></i>&nbsp;Tasks by Category</h5>
+                            <canvas id="category-chart"></canvas>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- Reminder Notifications Section -->
+                    <div class="row mt-2 justify-content-center">
+                        <h4 style="background-color: #FFBF00; padding: 10px 10px; margin-left: 20px;"> <i class="fas fa-clock"></i>&nbsp;Upcoming Deadlines</h4>
+                        <div class="row"><p id="notifications"></p></div>
+                    </div>
+                    <hr>
+                <div class="col-md-12 mt-3 mb-3">
+                    <h4 style="background-color: #FFBF00; padding: 10px 10px;"><i class="fas fa-file-alt"></i>&nbsp;Task Management App From</h4>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <form action="#" id="taskForm">
+                            <!-- Task Name -->
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Task Name</label>
+                                <input type="text" class="form-control" id="taskName" placeholder="Task Name" required>
+                              </div>
+                              <!-- Task Description -->
+                              <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Task Description</label>
+                                <textarea class="form-control" id="taskDescription" placeholder="Please add your description about your task...." required></textarea>
+                              </div>
+                              <!-- Task Deadlines -->
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput2" class="form-label">Task Deadlines</label>
+                                <input type="date" class="form-control" id="taskDeadline" required>
+                              </div>
+                              <!-- Task Priority -->
+                              <div class="mb-3">
+                                <label for="exampleDataList" class="form-label">Task Priority</label>
+                                <select class="form-select" id="taskPriority" aria-label="Default select example" required>
+                                    <option selected value="Low">Low</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="High">High</option>
+                                  </select>
+                              </div>
+                             <!-- Task Category -->
+                             <div class="mb-3">
+                                <label for="taskCategory" class="form-label">Task Category</label>
+                                <select class="form-select" id="taskCategory" aria-label="Task Category" required>
+                                    <option value="Work">Work</option>
+                                    <option value="Personal">Personal</option>
+                                    <option value="Urgent">Urgent</option>
+                                </select>
+                            </div>
+                            <!-- Task Recurrence -->
+                            <div class="mb-3">
+                                <label for="taskRecurrence" class="form-label">Task Recurrence</label>
+                                <select class="form-select" id="taskRecurrence" aria-label="Task Recurrence" required>
+                                    <option value="None">None</option>
+                                    <option value="Daily">Daily</option>
+                                    <option value="Weekly">Weekly</option>
+                                    <option value="Monthly">Monthly</option>
+                                </select>
+                            </div>
+                              <div class="row mt-4 mb-4 justify-content-center">
+                                <button type="submit" class="btn btn-warning w-50"  id="addTaskBtn"><i class="fa-solid fa-list-check"></i>&nbsp;Add Task</button>
+                                <button type="submit" class="btn btn-warning w-50" id="updateTaskBtn"><i class="fa-solid fa-rotate"></i>&nbsp;Update Task</button>
+                              </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <!-- Tasks List / Updated Task List / Deleted Task List Section -->
+        <div class="container">                
+            <div class="row mt-3 mb-2">
+                <!-- Tasks List -->
+                <div class="col-md-12 mt-5">
+                    <h4 style="background-color: #FFBF00; padding: 10px 10px;"><i class="fas fa-clipboard-list"></i>&nbsp;Task Lists!</h4>
+                    <div class="row justify-content-end mt-3 mb-3">
+                        <!-- Searching Task Lists -->
+                        <div class="col-md-4">
+                            <div class="form-group has-search">
+                                <span class="fa fa-search form-control-feedback"></span>
+                                <input type="text" class="form-control" id="searchTasks" placeholder="Search Your Task">
+                              </div>
+                        <!-- Sorting Options for Tasks -->
+                        <div class="mt-3">
+                            <label for="sortTasks" class="form-label">Sort Task List</label>
+                            <select class="form-select" id="sortTasks" onchange="sortTasks()" aria-label="Sort Task List" required>
+                                <option value="priority">Priority</option>
+                                <option value="deadline">Deadline</option>
+                                <option value="recurrence">Recurrence</option>
+                                <option value="status">Status (Completed/Incomplete)</option>
+                            </select>
+                            </select>
+                        </div>
+                    </div>
+                    </div>
+                    <ul id="taskList" class="list-group"></ul>
+                    <div class="row p-2">
+                        <div class="col-md-12 mt-2 mb-2 p-2 text-center">
+                            <button id="downloadTasksPdf" class="btn btn-outline-warning"><i class="fa-solid fa-download"></i>&nbsp;Tasks List</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Updated Tasks List -->
+                <div class="col-md-12 mt-5">
+                    <h4 style="background-color: #FFBF00; padding: 10px 10px;"><i class="fa-solid fa-rotate"></i>&nbsp;Updated Task Lists!</h4>
+                    <div class="row justify-content-end mt-3 mb-3">
+                        <!-- Searching Updated Task Lists -->
+                        <div class="col-md-4">
+                            <div class="form-group has-search">
+                                <span class="fa fa-search form-control-feedback"></span>
+                                <input type="text" class="form-control" id="searchUpdated" placeholder="Search Your Task">
+                              </div>
+                        <!-- Sorting Options for Updated Tasks -->
+                        <div class="mt-3">
+                            <label for="sortUpdatedTasks" class="form-label">Sort Updated Task List</label>
+                            <select class="form-select" id="sortUpdatedTasks" onchange="sortUpdatedTasks()" aria-label="Sort Updated Task List" required>
+                                <option value="priority">Priority</option>
+                                <option value="deadline">Deadline</option>
+                                <option value="recurrence">Recurrence</option>
+                                <option value="status">Status (Completed/Incomplete)</option>
+                            </select>
+                        </div>
+                    </div>
+                    </div>
+                    <ul id="updatedTasks" class="list-group"></ul>
+                    <div class="row p-2">
+                        <div class="col-md-12 mt-2 mb-2 p-2 text-center">
+                            <button id="downloadUpdatedTasksPdf" class="btn btn-outline-warning"><i class="fa-solid fa-download"></i>&nbsp;Updated Tasks List</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Deleted Tasks Lists (Recovery) -->
+                <div class="col-md-12 mt-5">
+                    <h4 style="background-color: #FFBF00; padding: 10px 10px;"><i class="fas fa-trash"></i>&nbsp;Deleted Task Lists! (Recoverable)</h4>
+                    <div class="row justify-content-end mt-3 mb-3">
+                        <!-- Searching Deleted Task Lists -->
+                        <div class="col-md-4">
+                            <div class="form-group has-search">
+                                <span class="fa fa-search form-control-feedback"></span>
+                                <input type="text" class="form-control" id="searchDeleted" placeholder="Search Your Task">
+                              </div>
+                        <!-- Sorting Options for Updated Tasks -->
+                        <div class="mt-3">
+                            <label for="sortDeletedTasks" class="form-label">Sort Deleted Task List</label>
+                            <select class="form-select" id="sortDeletedTasks" onchange="sortDeletedTasks()" aria-label="Sort Deleted Task List" required>
+                                <option value="priority">Priority</option>
+                                <option value="deadline">Deadline</option>
+                                <option value="recurrence">Recurrence</option>
+                                <option value="status">Status (Completed/Incomplete)</option>
+                            </select>
+                        </div>
+                    </div>
+                    </div>
+                    <ul id="deletedTasks" class="list-group"></ul>
+                    <div class="row p-2">
+                        <div class="col-md-12 mt-2 mb-2 p-2 text-center">
+                            <button id="downloadDeletedTasksPdf" class="btn btn-outline-warning"><i class="fa-solid fa-download"></i>&nbsp;Deleted Tasks List</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+
+    <!-- js linkage -->
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/script.js"></script>
+    <!-- Include jsPDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+ 
+</body>
+</html>
