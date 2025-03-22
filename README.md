@@ -1,4 +1,4 @@
-# Project-18 Task Management Application
+# Task Management Application
 
 # Overview
 
